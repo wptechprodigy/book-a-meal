@@ -1,0 +1,22 @@
+{
+  "name": "book-a-meal",
+  "version": "1.0.0",
+  "description": "Book a meal on the go",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wptechprodigy/book-a-meal.git"
+  },
+  "author": "Waheed Afolabi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wptechprodigy/book-a-meal/issues"
+  },
+  "homepage": "https://github.com/wptechprodigy/book-a-meal#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
