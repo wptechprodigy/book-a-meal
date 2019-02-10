@@ -1,0 +1,198 @@
+/* Reset */
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600,800');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+:root {
+	--Deep-green-1: #146623;
+	--Deep-green-2: #2e9942;
+	--Light-green-1: #52cc68;
+	--Light-green-2: #80ff97;
+	--near-red: #d35400;
+}
+
+/* General style */
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+body {
+	background-color: #dbecda;
+	font-family: 'Raleway', sans-serif;
+	overflow-x: hidden;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto;
+	/* overflow: hidden; */
+}
+
+/* Header Style */
+header {
+	display: flex;
+	border-bottom: 3px solid var(--Deep-green-1);
+	min-height: 100px;
+	width: 100%;
+	padding: 20px 0;
+}
+
+header nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header nav .menu-item {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+header nav .menu-item li {
+	text-transform: uppercase;
+	font-weight: 600;
+	margin-top: 10px;
+	align-items: center;
+	justify-content: center;
+}
+
+.menu-link {
+	margin-left: 40px;
+}
+
+.header-brand {
+	/* align-items: flex-start; */
+	font-size: 3rem;
+	font-weight: 700;
+	color: var(--Deep-green-1);
+}
+
+h3 {
+	color: #d35400;
+}
+
+/* Showcase style */
+#showcase {
+	background: url(img/mantra-media.jpg) no-repeat center center / cover;
+	max-width: 100%;
+	height: auto;
+	padding: 100px 60px;
+	text-align: center;
+	margin-bottom: 20px;
+	position: relative;
+	z-index: 1;
+}
+
+#showcase::before {
+	position: absolute;
+	content: '';
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: var(--Light-green-2);
+	opacity: 0.6;
+	z-index: -1;
+}
+
+.showcase-title {
+	font-size: 2.5em;
+	font-weight: 800;
+	color: #333;
+	padding-bottom: 20px;
+}
+
+.showcase-subtitle {
+	color: #333;
+	font-size: 1rem;
+	font-weight: 600;
+	line-height: 1.5rem;
+	padding-bottom: 30px;
+}
+
+.button {
+	width: 100%;
+	margin: 30px auto;
+	text-transform: uppercase;
+	font-size: 2rem;
+	text-align: center;
+	font-weight: 800;
+	padding: 10px 80px;
+	border-radius: 10px;
+	color: #fff;
+	background-color: var(--near-red);
+	transition: all 0.5s ease-in-out;
+	text-shadow: 1px 1px 2px #192a56;
+}
+
+.button:hover {
+	transform: scale(1.2);
+}
+
+/* Menu grid */
+.grid-wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+.box > img {
+	width: 100%;
+}
+
+.box {
+	padding: 130px;
+	margin: 20px;
+	background-color: #444;
+}
+
+.zone {
+	cursor: pointer;
+	color: #fff;
+	font-size: 2em;
+	transition: all 0.3s linear;
+}
+
+.zone:hover {
+	-webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+	-o-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+	box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
+		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
+}
+
+.green {
+	background: #56b870; /* Old browsers */
+	background: -moz-linear-gradient(top, #56b870 0%, #a5c956 100%); /* FF3.6+ */
+	background: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0%, #56b870),
+		color-stop(100%, #a5c956)
+	); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(
+		top,
+		#56b870 0%,
+		#a5c956 100%
+	); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(
+		top,
+		#56b870 0%,
+		#a5c956 100%
+	); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #56b870 0%, #a5c956 100%); /* IE10+ */
+	background: linear-gradient(top, #56b870 0%, #a5c956 100%); /* W3C */
+}
