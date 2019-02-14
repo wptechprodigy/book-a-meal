@@ -38,6 +38,53 @@ body {
 	/* overflow: hidden; */
 }
 
+.rm-padding-btm {
+	padding-bottom: 0;
+}
+
+/* Buttons */
+.primary-btn {
+	font-size: 1.2rem;
+	padding: 0.7rem 1rem;
+	font-weight: 500;
+	height: 2.7rem;
+	display: block;
+	background: var(--Deep-green-1);
+	border-radius: 4px;
+	border: 0;
+	text-decoration: none;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+	transition: all 0.5s;
+}
+
+.primary-btn:hover {
+	background: var(--near-red);
+}
+
+.secondary-btn {
+	padding: 0.7rem 1rem;
+	font-weight: 500;
+	height: 2.7rem;
+	display: block;
+	background: none;
+	border-radius: 2px;
+	border: 1px solid var(--Deep-green-1);
+	text-decoration: none;
+	color: var(--Deep-green-1);
+	cursor: pointer;
+	text-align: center;
+	transition: all 0.5s ease-in-out;
+}
+
+.secondary-btn:hover {
+	border: 1px solid var(--near-red);
+	color: var(--near-red);
+	font-weight: 600;
+	transform: scale(1.07);
+}
+
 /* Header Style */
 header {
 	display: flex;
@@ -56,7 +103,7 @@ header nav {
 header nav .menu-item {
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
+	justify-content: right;
 }
 
 header nav .menu-item li {
@@ -68,7 +115,7 @@ header nav .menu-item li {
 }
 
 .menu-link {
-	margin-left: 40px;
+	margin-left: 20px;
 }
 
 .header-brand {
@@ -80,6 +127,70 @@ header nav .menu-item li {
 
 h3 {
 	color: #d35400;
+}
+
+/* Meal Tabs */
+#admin-menu {
+	display: flex;
+	flex-direction: column;
+}
+
+#admin-menu ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+.menu-tab {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.menu-tab li button {
+	background-color: var(--Light-green-2);
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 10px 15px;
+	transition: 0.3s;
+}
+
+.menu-tab li button:hover {
+	background-color: var(--Light-green-1);
+}
+
+.menu-tab button.active {
+	background-color: var(--Deep-green-2);
+	color: #fff;
+}
+
+.tabcontent {
+	display: none;
+	padding: 6px 12px;
+	border: 1px solid #ccc;
+	border-top: none;
+	-webkit-animation: fadeEffect 1s;
+	animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeEffect {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 /* Showcase style */
@@ -157,7 +268,6 @@ h3 {
 
 /* On mouse-over, add a deeper shadow */
 .card:hover {
-	/* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); */
 	-webkit-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
 		inset rgba(0, 0, 0, 0.15) 0px -10px 20px;
 	-moz-box-shadow: rgba(0, 0, 0, 0.8) 0px 5px 15px,
@@ -192,6 +302,97 @@ h3 {
 	opacity: 0.7;
 }
 
+/* Menu Tab */
+#tabitems {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 1rem;
+}
+
+#tabitems form {
+	width: 50%;
+	padding-bottom: 1rem;
+	margin: 10px auto 5% auto;
+}
+
+#tabitems label {
+	font-size: 0.7rem;
+	line-height: 1rem;
+	font-weight: 400;
+}
+
+#tabitems .text-input {
+	margin-bottom: 0.3rem;
+	width: 100%;
+	border-radius: 4px;
+	background: var(--Light-green-2);
+	border: 1px solid #555;
+	color: rgb(7, 7, 7);
+	padding: 0.5rem 1rem;
+	line-height: 1rem;
+}
+
+#tabitems .text-input:last-child {
+	margin-bottom: 1.2rem;
+}
+
+#tabitems .primary-btn {
+	width: 100%;
+}
+
+#tabitems h3 {
+	font-weight: 600;
+	margin: 10px auto;
+	font-size: 1.5rem;
+}
+
+/* Tables */
+.details-table {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.details-table table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid var(--Deep-green-1);
+}
+
+th {
+	background-color: var(--Deep-green-1);
+	color: var(--Light-green-2);
+}
+
+th,
+td {
+	text-align: center;
+	padding: 0.4rem;
+	border-right: 1px solid var(--Deep-green-2);
+}
+
+th:last-child,
+td:last-child {
+	border-right: 0;
+}
+
+tr {
+	border-bottom: 1px solid var(--Deep-green-2);
+}
+
+tr:last-child {
+	border-bottom: 0;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
 /* Sign-in form */
 #login {
 	display: flex;
@@ -215,12 +416,12 @@ h3 {
 
 #login label {
 	font-size: 0.9rem;
-	line-height: 2rem;
+	line-height: 1.5rem;
 	font-weight: 500;
 }
 
 #login .text-input {
-	margin-bottom: 1.3rem;
+	margin-bottom: 0.7rem;
 	width: 100%;
 	border-radius: 4px;
 	background: var(--Light-green-2);
@@ -228,6 +429,10 @@ h3 {
 	color: rgb(7, 7, 7);
 	padding: 0.5rem 1rem;
 	line-height: 1.3rem;
+}
+
+#login .text-input:last-child {
+	margin-bottom: 1.2rem;
 }
 
 #login .primary-btn {
@@ -266,49 +471,6 @@ h3 {
 #login .or span {
 	color: #333;
 	padding: 0 0.8rem;
-}
-
-/* Buttons */
-.primary-btn {
-	font-size: 1.2rem;
-	padding: 0.7rem 1rem;
-	font-weight: 500;
-	height: 2.7rem;
-	display: block;
-	background: var(--Deep-green-1);
-	border-radius: 2px;
-	border: 0;
-	text-decoration: none;
-	color: #fff;
-	cursor: pointer;
-	text-align: center;
-	transition: all 0.5s;
-}
-
-.primary-btn:hover {
-	background: var(--near-red);
-}
-
-.secondary-btn {
-	padding: 0.7rem 1rem;
-	font-weight: 500;
-	height: 2.7rem;
-	display: block;
-	background: none;
-	border-radius: 2px;
-	border: 1px solid var(--Deep-green-1);
-	text-decoration: none;
-	color: var(--Deep-green-1);
-	cursor: pointer;
-	text-align: center;
-	transition: all 0.5s ease-in-out;
-}
-
-.secondary-btn:hover {
-	border: 1px solid var(--near-red);
-	color: var(--near-red);
-	font-weight: 600;
-	transform: scale(1.07);
 }
 
 /* Footer */
