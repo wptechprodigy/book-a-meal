@@ -362,7 +362,7 @@ h4 {
 }
 
 #tabitems .del-btn:hover {
-background: var(--near-red);
+	background: var(--near-red);
 }
 
 #tabitems h3 {
@@ -397,6 +397,8 @@ background: var(--near-red);
 th {
 	background-color: var(--Deep-green-1);
 	color: var(--Light-green-2);
+	font-size: 0.9rem;
+	font-weight: 500;
 }
 
 th,
