@@ -103,8 +103,8 @@
                   <td>350</td>
                   <td>Amala along with Gbegiri, ewedu and 2 pieces of meat</td>
                   <td><img src="./img/african-dish.png" alt="Amala with Gbegiri" height="15%"></td>
-                  <td><input type="button" value="Edit"></td>
-                  <td><input type="button" value="Delete"></td>
+                  <td><input type="button" value="Edit" class="primary-btn pry-btn-sm"></td>
+                  <td><input type="button" value="Delete" class="primary-btn pry-btn-sm del-btn"></td>
                 </tr>
                 <tr>
                   <td>2</td>
@@ -112,8 +112,8 @@
                   <td>350</td>
                   <td>Beans with 10 pieces of sliced yam</td>
                   <td><img src="./img/sufuria.png" alt="Amala with Gbegiri" height="15%"></td>
-                  <td><input type="button" value="Edit"></td>
-                  <td><input type="button" value="Delete"></td>
+                  <td><input type="button" value="Edit" class="primary-btn pry-btn-sm"></td>
+                  <td><input type="button" value="Delete" class="primary-btn pry-btn-sm del-btn"></td>
                 </tr>
               </table>
             </div>
@@ -122,8 +122,89 @@
 
 				<div id="mealOptions" class="tabcontent">
           <div id="tabitems">
-            <h3>Menu Options</h3>
-            <p>Meal menu options available by day</p>
+            <h3>Meal Menu</h3>
+            <form action="">
+              <div>
+                <label>Meal Name</label>
+                <input type="text" placeholder="Meal name..." class="text-input" required />
+              </div>
+              
+              <div>
+                <label>Day</label>
+                <input type="date" placeholder="Date..." class="text-input" required></input>
+              </div>
+
+
+              <button type="submit" class="primary-btn">
+                Set Menu
+              </button>
+
+            </form>
+            <div class="details-table">
+              <h4>Today - 02/14/2019</h4>
+              <table>
+                <tr>
+                  <th>id</th>
+                  <th>Name</th>
+                  <th>Price (NGN)</th>
+                  <th>Description</th>
+                  <th>Image</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Amala with Gbegiri</td>
+                  <td>350</td>
+                  <td>Amala along with Gbegiri, ewedu and 2 pieces of meat</td>
+                  <td><img src="./img/african-dish.png" alt="Amala with Gbegiri" height="15%"></td>
+                  <td><input type="button" value="Edit" class="primary-btn pry-btn-sm"></td>
+                  <td><input type="button" value="Delete" class="primary-btn pry-btn-sm del-btn"></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Beans with Yam</td>
+                  <td>350</td>
+                  <td>Beans with 10 pieces of sliced yam</td>
+                  <td><img src="./img/sufuria.png" alt="Amala with Gbegiri" height="15%"></td>
+                  <td><input type="button" value="Edit" class="primary-btn pry-btn-sm"></td>
+                  <td><input type="button" value="Delete" class="primary-btn pry-btn-sm del-btn"></td>
+                </tr>
+              </table>
+            </div>
+            <div class="details-table">
+              <h4>Tuesday - 02/15/2019</h4>
+              <table>
+                <tr>
+                  <th>id</th>
+                  <th>Name</th>
+                  <th>Price (NGN)</th>
+                  <th>Description</th>
+                  <th>Image</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Amala with Gbegiri</td>
+                  <td>350</td>
+                  <td>Amala along with Gbegiri, ewedu and 2 pieces of meat</td>
+                  <td><img src="./img/african-dish.png" alt="Amala with Gbegiri" height="15%"></td>
+                  <td><input type="button" value="Edit" class="primary-btn pry-btn-sm"></td>
+                  <td><input type="button" value="Delete" class="primary-btn pry-btn-sm del-btn"></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Beans with Yam</td>
+                  <td>350</td>
+                  <td>Beans with 10 pieces of sliced yam</td>
+                  <td><img src="./img/sufuria.png" alt="Amala with Gbegiri" height="15%"></td>
+                  <td><input type="button" value="Edit" class="primary-btn pry-btn-sm"></td>
+                  <td><input type="button" value="Delete" class="primary-btn pry-btn-sm del-btn"></td>
+                </tr>
+              </table>
+            </div>
+            
           </div>
 				</div>
 
@@ -133,7 +214,7 @@
             <p>History of orders for a vendor (caterer)</p>
           </div>
 				</div>
-			</section>
+			</section>    
 		</main>
 		<footer>
 			<div class="container">
@@ -144,5 +225,6 @@
 		</footer>
 
 		<script src="./js/caterer.js"></script>
+    <script src="./js/caterer1.js"></script>
 	</body>
 </html>
