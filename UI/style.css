@@ -1,13 +1,6 @@
 /* Reset */
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,600,800');
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-}
-
 :root {
 	--Deep-green-1: #146623;
 	--Deep-green-2: #2e9942;
@@ -18,9 +11,17 @@
 	--body-background: #dbecda;
 }
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
 /* General style */
 a {
 	text-decoration: none;
+	color: var(--Deep-green-1);
 }
 
 li {
@@ -262,6 +263,20 @@ h4 {
 
 .button:hover {
 	transform: scale(1.2);
+}
+
+/* Particular Day Menu */
+.particular-daymenu {
+	display: flex;
+	flex-direction: column;
+}
+
+.particular-daymenu h3 {
+	text-align: center;
+	margin: 20px auto;
+	padding-bottom: 5px;
+	border-bottom: 3px solid var(--Deep-green-2);
+	font-weight: 600;
 }
 
 /* Menu grid */
