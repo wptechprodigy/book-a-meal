@@ -5,7 +5,10 @@ const app = express();
 const PORT = 9000;
 
 app.get('/', (req, res) => {
-  res.status(200).send('Hello World!');
+  res.status(200).send({
+    status: 200,
+    message: 'Express bootsrapping is working fine! So, everything is working fine',
+  });
 });
 
 app.listen(PORT);
