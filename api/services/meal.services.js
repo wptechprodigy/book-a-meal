@@ -22,8 +22,14 @@ const MealService = {
     return meal;
   },
   getAMeal(id) {
-    const meal = dummyDBData.meals.find(meal => meal.id === id);
+    const meal = dummyDBData.meals.find((meal) => meal.id === id);
     return meal || {};
+  },
+  deleteAMealOption(id) {
+    const meal = dummyDBData.meals.find((meal) => meal.id === id);
+    const index = dummyDBData.meals.indexOf(meal);
+    dummyDBData.meals.splice(index, 1);
+    return {};
   },
 };
 
