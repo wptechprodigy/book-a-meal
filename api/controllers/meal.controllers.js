@@ -19,7 +19,7 @@ const MealController = {
     */
     const newMeal = req.body;
     const createdMeal = MealService.addMeal(newMeal);
-    return res.status(201).json({
+    res.status(201).json({
       status: 'Meal option added successfully',
       data: createdMeal,
     });
@@ -30,6 +30,14 @@ const MealController = {
     res.status(200).json({
       status: 'Meal retrieved successfully',
       data: foundMeal,
+    });
+  },
+  updateAMealOption(req, res) {
+    const { id } = req.params;
+    const updatedMealOption = MealService.updateAMeal(id, req.body);
+    res.status(201).json({
+      status: 'Meal updated successfully',
+      data: updatedMealOption,
     });
   },
   deleteAMealOption(req, res) {
