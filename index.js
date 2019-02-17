@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.set('/api/v1/meals', mealRoutes);
+app.use('/api/v1/meals', mealRoutes);
 
 app.listen(PORT);
 
