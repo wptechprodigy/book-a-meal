@@ -25,6 +25,14 @@ const MealService = {
     const meal = dummyDBData.meals.find(meal => meal.id === Number(id));
     return meal || {};
   },
+  updateAMeal(id, data) {
+    const meal = dummyDBData.meals.find(meal => meal.id === Number(id));
+    const index = dummyDBData.meals.indexOf(meal);
+    dummyDBData.meals[index].name = data.name || meal.name;
+    dummyDBData.meals[index].price = data.price || meal.price;
+    dummyDBData.meals[index].description = data.description || meal.description;
+    return dummyDBData.meals[index];
+  },
   deleteAMealOption(id) {
     const meal = dummyDBData.meals.find(meal => meal.id === Number(id));
     const index = dummyDBData.meals.indexOf(meal);
