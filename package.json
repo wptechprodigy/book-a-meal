@@ -19,7 +19,8 @@
 	"homepage": "https://github.com/wptechprodigy/book-a-meal#readme",
 	"dependencies": {
 		"body-parser": "^1.18.3",
-		"express": "^4.16.4"
+		"express": "^4.16.4",
+		"moment": "^2.24.0"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.2.3",

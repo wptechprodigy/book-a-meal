@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export default {
   meals: [
     {
@@ -23,6 +25,12 @@ export default {
       name: 'Salad with plantain',
       price: '350',
       description: 'A little description',
+    },
+  ],
+  menus: [
+    {
+      availableOn: moment.now(),
+      mealOptions: [],
     },
   ],
 };
