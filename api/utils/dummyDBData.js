@@ -33,4 +33,18 @@ export default {
       mealOptions: [],
     },
   ],
+  orders: [
+    {
+      mealId: 1,
+      quantity: 1,
+    },
+    {
+      mealId: 2,
+      quantity: 2,
+    },
+    {
+      mealId: 4,
+      quantity: 1,
+    },
+  ],
 };
