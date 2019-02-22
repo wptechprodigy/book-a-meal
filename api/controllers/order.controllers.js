@@ -1,4 +1,4 @@
-import MealService from '../services/meal.services';
+// import MealService from '../services/meal.services';
 import OrderService from '../services/order.services';
 
 const OrderController = {
@@ -13,8 +13,8 @@ const OrderController = {
     /*
     Expect a sample json object
     {
-      "mealId": "Meal Id", mealID here should be the same with product Id
-      "quantity" "1",
+      "mealId": mealID here should be the same with product Id
+      "quantity" 1,
     }
     */
     const newOrder = req.body;
