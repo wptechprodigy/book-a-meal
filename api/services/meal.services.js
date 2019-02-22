@@ -17,25 +17,27 @@ const MealService = {
     const mealsLength = dummyDBData.meals.length;
     const lastId = dummyDBData.meals[mealsLength - 1].id;
     const newId = lastId + 1;
-    meal.id = newId;
+
+    const newMeal = meal;
+    newMeal.id = newId;
     dummyDBData.meals.push(meal);
     return meal;
   },
   getAMeal(id) {
-    const meal = dummyDBData.meals.find(meal => meal.id === Number(id));
-    return meal || {};
+    const foundMeal = dummyDBData.meals.find(meal => meal.id === Number(id));
+    return foundMeal || {};
   },
   updateAMeal(id, data) {
-    const meal = dummyDBData.meals.find(meal => meal.id === Number(id));
-    const index = dummyDBData.meals.indexOf(meal);
-    dummyDBData.meals[index].name = data.name || meal.name;
-    dummyDBData.meals[index].price = data.price || meal.price;
-    dummyDBData.meals[index].description = data.description || meal.description;
+    const mealToBeUpdated = dummyDBData.meals.find(meal => meal.id === Number(id));
+    const index = dummyDBData.meals.indexOf(mealToBeUpdated);
+    dummyDBData.meals[index].name = data.name || mealToBeUpdated.name;
+    dummyDBData.meals[index].price = data.price || mealToBeUpdated.price;
+    dummyDBData.meals[index].description = data.description || mealToBeUpdated.description;
     return dummyDBData.meals[index];
   },
   deleteAMealOption(id) {
-    const meal = dummyDBData.meals.find(meal => meal.id === Number(id));
-    const index = dummyDBData.meals.indexOf(meal);
+    const mealToBeDeleted = dummyDBData.meals.find(meal => meal.id === Number(id));
+    const index = dummyDBData.meals.indexOf(mealToBeDeleted);
     dummyDBData.meals.splice(index, 1);
     return {};
   },
