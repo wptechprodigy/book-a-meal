@@ -1,5 +1,5 @@
 import dummyDBData from '../utils/dummyDBData';
-import Meal from '../models/meal.models';
+// import Meal from '../models/meal.models';
 import Order from '../models/order.models';
 
 const OrderService = {
@@ -16,10 +16,7 @@ const OrderService = {
     // get id of meal
     // assign it to mealId
     // pass it along as an order with meal details
-    const orderedID = order.id;
-    const mealId = dummyDBData.meals.push(orderedID);
-    // const mealId = dummyDBData.meals[0];
-    const { quantity } = dummyDBData.orders;
+    const { mealId, quantity } = order;
     dummyDBData.orders.push({
       mealId,
       quantity,
@@ -30,22 +27,22 @@ const OrderService = {
     const orderedMeal = dummyDBData.meals.find(meal => meal.id === Number(id));
     const orderedQuantity = dummyDBData.orders.find(order => order.mealId === Number(id));
     const { quantity } = orderedQuantity;
-    const order = {
+    const ordered = {
       orderedMeal,
       quantity,
     };
-    return order || {};
+    return ordered || {};
   },
   updateOrder(id, data) {
-    const order = dummyDBData.orders.find(order => order.mealId === Number(id));
-    const index = dummyDBData.orders.indexOf(order);
-    dummyDBData.orders[index].mealId = data.mealId || order.mealId;
-    dummyDBData.orders[index].quantity = data.quantity || order.quantity;
+    const alreadyordered = dummyDBData.orders.find(order => order.mealId === Number(id));
+    const index = dummyDBData.orders.indexOf(alreadyordered);
+    dummyDBData.orders[index].mealId = data.mealId || alreadyordered.mealId;
+    dummyDBData.orders[index].quantity = data.quantity || alreadyordered.quantity;
     return dummyDBData.orders[index];
   },
   deleteOrder(id) {
-    const order = dummyDBData.orders.find(order => order.mealId === Number(id));
-    const index = dummyDBData.orders.indexOf(order);
+    const toBeDeletedOrder = dummyDBData.orders.find(order => order.mealId === Number(id));
+    const index = dummyDBData.orders.indexOf(toBeDeletedOrder);
     dummyDBData.meals.splice(index, 1);
     return {};
   },
