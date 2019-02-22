@@ -5,7 +5,8 @@ const OrderController = {
   fetchAllOrders(req, res) {
     const allOrders = OrderService.fetchOrders();
     res.status(200).json({
-      status: 'All orders are fetched successfully',
+      status: 'Success',
+      message: 'All orders retrieved successfully',
       data: allOrders,
     });
   },
@@ -20,7 +21,8 @@ const OrderController = {
     const newOrder = req.body;
     const createdOrder = OrderService.addOrder(newOrder);
     res.status(201).json({
-      status: 'Order added successfully',
+      status: 'Success',
+      message: 'Order added successfully',
       data: createdOrder,
     });
   },
@@ -28,7 +30,8 @@ const OrderController = {
     const { mealId } = req.params;
     const foundOrder = OrderService.getOrder(mealId);
     res.status(200).json({
-      status: 'Order retrieved successfully',
+      status: 'Success',
+      message: 'Order retrieved successfully',
       data: foundOrder,
     });
   },
@@ -36,7 +39,8 @@ const OrderController = {
     const { mealId } = req.params;
     const updatedOrder = OrderService.updateOrder(mealId, req.body);
     res.status(201).json({
-      status: 'Order updated successfully',
+      status: 'Success',
+      message: 'Order updated successfully',
       data: updatedOrder,
     });
   },
@@ -45,7 +49,8 @@ const OrderController = {
     OrderService.deleteOrder(id);
     const allMeals = OrderService.fetchOrders();
     res.status(204).json({
-      status: 'Order deleted successfully',
+      status: 'Success',
+      message: 'Order deleted successfully',
       data: allMeals,
     });
   },

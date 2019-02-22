@@ -5,6 +5,7 @@ const MealController = {
     const allMeals = MealService.fetchAllMeals();
     res.status(200).json({
       status: 'Success',
+      message: 'Meals retrieved successfully',
       data: allMeals,
     });
   },
@@ -20,7 +21,8 @@ const MealController = {
     const newMeal = req.body;
     const createdMeal = MealService.addMeal(newMeal);
     res.status(201).json({
-      status: 'Meal option added successfully',
+      status: 'Success',
+      message: 'Meal option added successfully',
       data: createdMeal,
     });
   },
@@ -28,7 +30,8 @@ const MealController = {
     const { id } = req.params;
     const foundMeal = MealService.getAMeal(id);
     res.status(200).json({
-      status: 'Meal retrieved successfully',
+      status: 'Success',
+      message: 'Retrieved meal successfully',
       data: foundMeal,
     });
   },
@@ -36,7 +39,8 @@ const MealController = {
     const { id } = req.params;
     const updatedMealOption = MealService.updateAMeal(id, req.body);
     res.status(201).json({
-      status: 'Meal updated successfully',
+      status: 'Success',
+      message: 'Meal updated successfully',
       data: updatedMealOption,
     });
   },
@@ -45,7 +49,8 @@ const MealController = {
     MealService.deleteAMealOption(id);
     const allMeals = MealService.fetchAllMeals();
     res.status(204).json({
-      status: 'Meal deleted successfully',
+      status: 'Success',
+      message: 'Meal deleted successfully',
       data: allMeals,
     });
   },
