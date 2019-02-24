@@ -1,27 +1,33 @@
-import moment from 'moment';
 import MenuService from '../services/menu.services';
 
 const MenuController = {
   fetchAllMenus(req, res) {
-    const allMenu = MenuService.fetchAllMenus();
+    const allMenus = MenuService.fetchMenus();
     res.status(200).json({
       status: 'Success',
-      data: allMenu,
+      message: 'All menus were retrieved successfully',
+      data: allMenus,
     });
   },
   addAMealOption(req, res) {
     /*
       Expect a sample json object
-      { 
-        "availableOn": moment.now() To be handled by moment.now
-        "mealOptions": [];
+      { "availableOn": moment().format() To be handled by moment.now
+        "mealOption": [
+          {
+            id
+            name
+            price
+            description
+          }
+        ];
       }
     */
-    const newMenu = req.body;
-    const createdMenu = MenuService.addMenu(newMenu);
+    const newMealOption = req.body;
+    const createdMenu = MenuService.addAMealOption(newMealOption);
     res.status(201).json({
-      status: 'Menu setup successfully',
-      availableOn: moment.now(),
+      status: 'Success',
+      message: 'Meal option added to menu successfully',
       data: createdMenu,
     });
   },
@@ -29,8 +35,9 @@ const MenuController = {
     const { availableOn } = req.params;
     const foundMenu = MenuService.getMenuForParticularDay(availableOn);
     res.status(200).json({
-      status: 'Menu retrieved successfully',
-      data: foundMenu,
+      status: 'Success',
+      message: 'Menu retrieved successfully',
+      data: foundMenu || {},
     });
   },
 };
