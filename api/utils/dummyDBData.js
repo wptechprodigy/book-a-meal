@@ -29,8 +29,21 @@ export default {
   ],
   menus: [
     {
-      availableOn: moment.now(),
-      mealOptions: [],
+      availableOn: moment().format('L'),
+      mealOptions: [
+        {
+          id: 1,
+          name: 'Amala with gbegiri',
+          price: '450',
+          description: 'A little description',
+        },
+        {
+          id: 2,
+          name: 'Iyan with efo-riro',
+          price: '550',
+          description: 'A little description',
+        },
+      ],
     },
   ],
   orders: [
