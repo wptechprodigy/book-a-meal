@@ -94,6 +94,7 @@ describe('Meals', () => {
         .delete(`/api/v1/meals/${id}`)
         .set('Accept', 'application/json')
         .end((err, res) => {
+          res.should.have.status(204);
           done();
         });
     });
