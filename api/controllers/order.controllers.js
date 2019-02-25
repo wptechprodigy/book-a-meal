@@ -47,11 +47,9 @@ const OrderController = {
   deleteAnOrder(req, res) {
     const { id } = req.params;
     OrderService.deleteOrder(id);
-    const allMeals = OrderService.fetchOrders();
-    res.status(204).json({
+    return res.status(204).json({
       status: 'Success',
       message: 'Order deleted successfully',
-      data: allMeals,
     });
   },
 };
