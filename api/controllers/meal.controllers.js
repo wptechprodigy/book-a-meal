@@ -47,10 +47,11 @@ const MealController = {
   deleteAMealOption(req, res) {
     const { id } = req.params;
     MealService.deleteAMealOption(id);
-    return res.status(204).json({
+    const result = res.status(204).send({
       status: 'Success',
       message: 'Meal deleted successfully',
     });
+    return result;
   },
 };
 
