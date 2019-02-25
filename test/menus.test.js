@@ -1,6 +1,7 @@
 import chai from 'chai';
 import chaiHTTP from 'chai-http';
 import app from '../index';
+import menus from '../api/utils/dummyDBData';
 
 chai.should();
 
@@ -22,6 +23,26 @@ describe('Menus', () => {
           res.body.should.have.property('data');
           res.body.data.should.be.a('array');
           res.body.data.length.should.be.eql(1);
+          done();
+        });
+    });
+  });
+  /*
+ Test /GET/:mealId Meals route
+*/
+  describe('/GET/:availableOn menu', () => {
+    it('it should GET a menu', (done) => {
+      const availableOn = '26-02-19';
+      chai.request(app)
+        .get(`/api/v1/menus/${availableOn}`)
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.should.have.property('status').eql('Success');
+          res.body.should.have.property('message').eql('Menu retrieved successfully');
+          res.body.should.have.property('data');
+          res.body.should.be.a('object');
           done();
         });
     });

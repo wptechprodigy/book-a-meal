@@ -29,7 +29,7 @@ export default {
   ],
   menus: [
     {
-      availableOn: moment().format('L'),
+      availableOn: moment().format('DD-MM-YY'),
       mealOptions: [
         {
           id: 1,
