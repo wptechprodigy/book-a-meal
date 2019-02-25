@@ -26,4 +26,27 @@ describe('Menus', () => {
         });
     });
   });
+  /*
+ Test /GET/:mealId Meals route
+*/
+  describe('/GET/:availableOn meal', () => {
+    it('it should GET a meal by a given mealId', (done) => {
+      const availableOn = '26-02-19';
+      chai.request(app)
+        .get(`/api/v1/menus/${availableOn}`)
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.should.have.property('status').eql('Success');
+          res.body.should.have.property('message').eql('Menu retrieved successfully');
+          res.body.should.have.property('data');
+          res.body.should.be.a('object');
+          res.body.data.should.have.property('availableOn').eql('26-02-19');
+          res.body.data.should.have.property('mealOptions');
+          res.body.data.mealOptions.should.be.a('array');
+          done();
+        });
+    });
+  });
 });
