@@ -1,7 +1,6 @@
 import chai from 'chai';
 import chaiHTTP from 'chai-http';
 import app from '../index';
-// import Meal from '../api/models/meal.models';
 
 chai.should();
 
@@ -48,6 +47,29 @@ describe('Meals', () => {
           res.body.should.have.property('message').eql('Meal option added successfully');
           res.body.should.have.property('data');
           res.body.data.should.be.a('object');
+          res.body.data.should.have.property('id');
+          res.body.data.should.have.property('name');
+          res.body.data.should.have.property('price');
+          res.body.data.should.have.property('description');
+          done();
+        });
+    });
+  });
+  /*
+  Test /GET/:mealId Meals route
+*/
+  describe('/GET/:mealId meal', () => {
+    it('it should GET a meal by a given mealId', (done) => {
+      const id = 1;
+      chai.request(app)
+        .get(`/api/v1/meals/${id}`)
+        .set('Accept', 'application/json')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.should.have.property('status').eql('Success');
+          res.body.should.have.property('message').eql('Retrieved meal successfully');
+          res.body.should.have.property('data');
           res.body.data.should.have.property('id');
           res.body.data.should.have.property('name');
           res.body.data.should.have.property('price');
