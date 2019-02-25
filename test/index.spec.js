@@ -27,4 +27,33 @@ describe('Meals', () => {
         });
     });
   });
+    /*
+    Test /POST route
+  */
+  describe('/POST meal', () => {
+    it('it should POST a meal', (done) => {
+      const meal = {
+        id: 3,
+        name: 'Jollof rice with salad',
+        price: '300',
+        description: 'A little description',
+      };
+      chai.request(app)
+        .post('/api/v1/meals')
+        .send(meal)
+        .end((err, res) => {
+          res.should.have.status(201);
+          res.body.should.be.a('object');
+          res.body.should.have.property('status').eql('Success');
+          res.body.should.have.property('message').eql('Meal option added successfully');
+          res.body.should.have.property('data');
+          res.body.data.should.be.a('object');
+          res.body.data.should.have.property('id');
+          res.body.data.should.have.property('name');
+          res.body.data.should.have.property('price');
+          res.body.data.should.have.property('description');
+          done();
+        });
+    });
+  });
 });
