@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.status(200).send({
     status: 200,
-    message: 'The API is still working...Hooray!!!',
+    message: 'Welcome to Book-A-Meal API version 1 (v1)!!!',
   });
 });
 
