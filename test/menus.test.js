@@ -1,6 +1,7 @@
 import chai from 'chai';
 import chaiHTTP from 'chai-http';
 import app from '../index';
+import menus from '../api/utils/dummyDBData';
 
 chai.should();
 
@@ -29,8 +30,8 @@ describe('Menus', () => {
   /*
  Test /GET/:mealId Meals route
 */
-  describe('/GET/:availableOn meal', () => {
-    it('it should GET a meal by a given mealId', (done) => {
+  describe('/GET/:availableOn menu', () => {
+    it('it should GET a menu', (done) => {
       const availableOn = '26-02-19';
       chai.request(app)
         .get(`/api/v1/menus/${availableOn}`)
