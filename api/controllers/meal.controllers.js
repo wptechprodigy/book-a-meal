@@ -46,11 +46,10 @@ const MealController = {
   },
   deleteAMealOption(req, res) {
     const { id } = req.params;
-    const allMeals = MealService.deleteAMealOption(id);
-    res.status(204).json({
+    MealService.deleteAMealOption(id);
+    return res.status(204).json({
       status: 'Success',
       message: 'Meal deleted successfully',
-      data: allMeals,
     });
   },
 };
