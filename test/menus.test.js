@@ -43,9 +43,6 @@ describe('Menus', () => {
           res.body.should.have.property('message').eql('Menu retrieved successfully');
           res.body.should.have.property('data');
           res.body.should.be.a('object');
-          res.body.data.should.have.property('availableOn').eql('26-02-19');
-          res.body.data.should.have.property('mealOptions');
-          res.body.data.mealOptions.should.be.a('array');
           done();
         });
     });
