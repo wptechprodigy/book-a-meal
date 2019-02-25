@@ -78,4 +78,35 @@ describe('Meals', () => {
         });
     });
   });
+  /*
+ Test /PUT/:mealId Meal route
+*/
+  describe('/PUT/:mealId meal', () => {
+    it('it should UPDATE a meal by a given mealId', (done) => {
+      const meal = {
+        id: 3,
+        name: 'Jollof rice with salad',
+        price: '300',
+        description: 'A little description',
+      };
+      chai.request(app)
+        .put(`/api/v1/meals/${meal.id}`)
+        .set('Accept', 'application/json')
+        .send({
+          name: 'Jollof rice with salad',
+          price: '350',
+          description: 'A little more description',
+        })
+        .end((err, res) => {
+          res.should.have.status(201);
+          res.body.should.be.a('object');
+          res.body.should.have.property('status').eql('Success');
+          res.body.should.have.property('message').eql('Meal updated successfully');
+          res.body.should.have.property('data');
+          res.body.data.should.have.property('price').eql('350');
+          res.body.data.should.have.property('description').eql('A little more description');
+          done();
+        });
+    });
+  });
 });
