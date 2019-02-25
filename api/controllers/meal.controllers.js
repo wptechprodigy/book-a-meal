@@ -46,8 +46,7 @@ const MealController = {
   },
   deleteAMealOption(req, res) {
     const { id } = req.params;
-    MealService.deleteAMealOption(id);
-    const allMeals = MealService.fetchAllMeals();
+    const allMeals = MealService.deleteAMealOption(id);
     res.status(204).json({
       status: 'Success',
       message: 'Meal deleted successfully',
