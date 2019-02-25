@@ -26,7 +26,7 @@ describe('Meals', () => {
         });
     });
   });
-    /*
+  /*
     Test /POST route
   */
   describe('/POST meal', () => {
