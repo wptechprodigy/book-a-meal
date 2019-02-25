@@ -79,7 +79,41 @@ describe('Meals', () => {
     });
   });
   /*
-    Test /PUT/:mealId Meal route
+    Test /PUT route
+  */
+  describe('/PUT/:mealId meal', () => {
+    it('it should UPDATE a meal given a mealId', (done) => {
+      const meal = {
+        id: 1,
+        name: 'Amala with gbegiri',
+        price: '450',
+        description: 'A little description',
+      };
+      chai.request(app)
+        .put(`/api/v1/meals/${meal.id}`)
+        .send(
+          {
+            price: '550',
+            description: 'A little more description',
+          },
+        )
+        .end((err, res) => {
+          res.should.have.status(201);
+          res.body.should.be.a('object');
+          res.body.should.have.property('status').eql('Success');
+          res.body.should.have.property('message').eql('Meal updated successfully');
+          res.body.should.have.property('data');
+          res.body.data.should.be.a('object');
+          res.body.data.should.have.property('id').eql(1);
+          res.body.data.should.have.property('name').eql('Amala with gbegiri');
+          res.body.data.should.have.property('price').eql('550');
+          res.body.data.should.have.property('description').eql('A little more description');
+          done();
+        });
+    });
+  });
+  /*
+    Test /DELETE/:mealId Meal route
   */
   describe('/DELETE/:mealId meal', () => {
     it('it should DELETE a meal by a given mealId', (done) => {
