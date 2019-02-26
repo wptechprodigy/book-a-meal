@@ -28,7 +28,7 @@ describe('Menus', () => {
     });
   });
   /*
- Test /GET/:mealId Meals route
+ Test /GET/:availableOn Meals route
 */
   describe('/GET/:availableOn menu', () => {
     it('it should GET a menu', (done) => {
@@ -43,6 +43,36 @@ describe('Menus', () => {
           res.body.should.have.property('message').eql('Menu retrieved successfully');
           res.body.should.have.property('data');
           res.body.should.be.a('object');
+          done();
+        });
+    });
+  });
+  /*
+    Test /POST route
+  */
+  describe('/POST menu', () => {
+    it('it should POST a meal for a menu', (done) => {
+      const menu = {
+        availableOn: '02-27-2019',
+        mealOption: {
+          id: 4,
+          name: 'Salad with plantain',
+          price: '350',
+          description: 'A little description',
+        },
+      };
+      chai.request(app)
+        .post('/api/v1/menus')
+        .set('Accept', 'application/json')
+        .send(menu)
+        .end((err, res) => {
+          console.log(res.body);
+          res.should.have.status(201);
+          res.body.should.be.a('object');
+          res.body.should.have.property('status').eql('Success');
+          res.body.should.have.property('message').eql('Meal option added to menu successfully');
+          res.body.should.have.property('data');
+          res.body.data.should.be.a('array');
           done();
         });
     });
