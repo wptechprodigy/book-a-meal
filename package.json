@@ -10,10 +10,12 @@
 		"build": "npm run clean && npm run babel-build",
 		"start": "node build/index.js",
 		"debug": "node --debug ./build/index.js",
+		"generate-lcov": "nyc report --reporter=text-lcov > lcov.info",
+		"codeclimate-coverage": "codeclimate-test-reporter < lcov.info",
+		"coveralls-coverage": "coveralls < lcov.info",
+		"coverage": "nyc npm test && npm run generate-lcov && npm run coveralls-coverage && npm run codeclimate-coverage",
 		"test": "./node_modules/.bin/mocha --require @babel/register test/*.js --exit",
-		"cover": "nyc ./node_modules/.bin/_mocha --require @babel/register test/*.js --exit",
-		"coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-		"coverage": "nyc report --reporter=text-lcov | coveralls"
+		"cover": "nyc ./node_modules/.bin/_mocha --require @babel/register test/*.js --exit"
 	},
 	"repository": {
 		"type": "git",
