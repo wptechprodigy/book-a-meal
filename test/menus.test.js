@@ -66,7 +66,6 @@ describe('Menus', () => {
         .set('Accept', 'application/json')
         .send(menu)
         .end((err, res) => {
-          console.log(res.body);
           res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.property('status').eql('Success');
