@@ -1,4 +1,4 @@
-import Sequelize from 'sequelize';
+Sequelize from 'sequelize';
 import sequelize from '../utils/database';
 
 const User = sequelize.define('user', {
