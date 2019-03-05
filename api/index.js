@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import sequelize from './utils/database'
 
 // Routes
 import mealRoutes from './routes/meal.routes';
@@ -11,10 +12,9 @@ import orderRoutes from './routes/order.routes';
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(cors());
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.status(200).send({
