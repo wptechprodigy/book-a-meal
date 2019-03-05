@@ -1,27 +1,23 @@
 import Sequelize from 'sequelize';
 import sequelize from '../util/database';
 
-const Meal = sequelize.define('meal', {
+const Menu = sequelize.define('menu', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
-    allowNull: false,
-    primaryKey: true
-  },
-  name: {
-    type: Sequelize.STRING,
     allowNull: false
   },
-  price: {
-    type: Sequelize.INTEGER,
-    allowNull: false
+  avaialableOn: {
+      type: Sequelize.DATEONLY,
+      allowNull: false,
+      primary: true
   },
-  description: {
-    type: Sequelize.TEXT,
+  mealOptions: {
+    type: Sequelize.ARRAY,
     allowNull: false
   },
   createdAt: Sequelize.DATEONLY,
   updatedAt: Sequelize.DATEONLY
 });
 
-export default Meal;
+export default Menu;
