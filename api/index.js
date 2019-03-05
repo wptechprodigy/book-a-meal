@@ -1,16 +1,17 @@
-import 'dotenv/config';
 import express from 'express';
+import { config } from 'dotenv';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import sequelize from './utils/database'
+import sequelize from './utils/database';
 
 // Routes
 import mealRoutes from './routes/meal.routes';
 import menuRoutes from './routes/menu.routes';
 import orderRoutes from './routes/order.routes';
 
+config();
+
 const app = express();
-const PORT = process.env.PORT;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,8 +28,16 @@ app.use('/api/v1/meals', mealRoutes);
 app.use('/api/v1/menus', menuRoutes);
 app.use('/api/v1/orders', orderRoutes);
 
-app.listen(PORT);
-
-console.log(`Server running on port ${PORT}`);
+sequelize
+  .sync()
+  .then(() => {
+    console.log('DB Connection has been established');
+    app.listen(process.env.PORT, null, null, () => {
+      app.emit('dbConnected');
+    });
+  })
+  .catch((err) => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 export default app;
