@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import secret from '../util/jwt_secret';
+import secret from '../utils/jwt_secret';
 import User from '../models/user';
 
 class UserController {
