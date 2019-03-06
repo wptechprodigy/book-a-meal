@@ -1,13 +1,23 @@
-import express from 'express';
+import '@babel/polyfill';
 import { config } from 'dotenv';
+import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import sequelize from './utils/database';
+import fileUpload from 'express-fileupload';
+import swaggerUi from 'swagger-ui-express';
+import User from './models/user';
+import Caterer from './models/caterer';
+import Meal from './models/meals';
+import Menu from './models/menu';
+import swaggerDocument from './swagger.json';
 
 // Routes
-import mealRoutes from './routes/meal.routes';
-import menuRoutes from './routes/menu.routes';
-import orderRoutes from './routes/order.routes';
+import userRoutes from './routes/users.routes';
+import catererRoutes from './routes/caterers.routes';
+import mealRoutes from './routes/meals.routes';
+import menuRoutes from './routes/menus.routes';
+// import orderRoutes from './routes/orders.routes';
 
 config();
 
@@ -16,6 +26,21 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(fileUpload());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+const rootRoute = '/api/v1';
+
+app.use(rootRoute, userRoutes);
+app.use(rootRoute, catererRoutes);
+app.use(rootRoute, mealRoutes);
+app.use(rootRoute, menuRoutes);
+// app.use(rootRoute, orderRoutes);
+
+User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
+Order.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
+Meal.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
+Menu.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
 
 app.get('/', (req, res) => {
   res.status(200).send({
@@ -24,9 +49,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.use('/api/v1/meals', mealRoutes);
-app.use('/api/v1/menus', menuRoutes);
-app.use('/api/v1/orders', orderRoutes);
 
 sequelize
   .sync()
