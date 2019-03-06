@@ -7,7 +7,6 @@ class CatererController {
   static async registerCaterer(req, res) {
     try {
       const { name, email, phone, password } = req.body;
-      const cateringService = req.body.catering_service;
       const hash = await bcrypt.hash(password, 10);
       const caterer = await Caterer.create({
         name,
