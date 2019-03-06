@@ -7,7 +7,7 @@ class MealController {
       const { name, price } = req.body;
       const { image } = req.files;
       const imageUrl = `/api/images/${image.name}`;
-      const meal = await Meal.create({ name, price, imageUrl, catererId: req.caterer.id });
+      const meal = await Meal.create({ name, price, imageUrl, description, catererId: req.caterer.id });
       await image.mv(`.${imageUrl}`);
       return res.status(201).json({
         status: 'success',
@@ -87,8 +87,8 @@ class MealController {
       } else {
         mealUpdate.imageUrl = meal.imageUrl;
       }
-      const { name, price, imageUrl } = mealUpdate;
-      await Meal.update({ name, price, imageUrl }, { where: { id: req.params.id } });
+      const { name, price, description, imageUrl } = mealUpdate;
+      await Meal.update({ name, price, description, imageUrl }, { where: { id: req.params.id } });
       return res.status(200).json({
         status: 'success',
         message: 'Meal updated successfully',
