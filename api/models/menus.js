@@ -7,13 +7,12 @@ const Menu = sequelize.define('menu', {
     autoIncrement: true,
     allowNull: false
   },
-  avaialableOn: {
-      type: Sequelize.DATEONLY,
-      allowNull: false,
-      primary: true
-  },
   mealOptions: {
     type: Sequelize.ARRAY,
+    allowNull: false
+  },
+  catererId: {
+    type: Sequelize.INTEGER,
     allowNull: false
   },
   createdAt: Sequelize.DATEONLY,
