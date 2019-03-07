@@ -1,4 +1,4 @@
-import Menu from '../models/menu';
+import Menu from '../models/menus';
 import Meal from '../models/meals';
 
 class MenuController {
@@ -37,36 +37,35 @@ class MenuController {
         throw new Error(`Meal with ID ${mealId} Doesn't exist`);
       }
       const { createdAt, updatedAt, ...safeMeal } = meal.dataValues;
-      safeMeal.quantity = Number(quantity);
       const today = MenuController.generateDate();
       const menu = await Menu.findAll({ where: { catererId: req.caterer.id, createdAt: today } });
       let mealMenuOptions;
       if (menu.length === 0) {
         mealMenuOptions = [];
-        mealOptions.push(safeMeal);
+        mealMenuOptions.push(safeMeal);
         await Menu.create({
           mealOptions: JSON.stringify(mealMenuOptions),
-          catererId: req.caterer.id
+          catererId: req.caterer.id,
         });
         await Meal.update({ where: { createdAt: today } });
       } else {
-        mealOptions = await MenuController.updateMeals(menu[0], safeMeal, mealId);
+        mealMenuOptions = await MenuController.updateMeals(menu[0], safeMeal, mealId);
         await Menu.update(
           { mealOptions: JSON.stringify(mealMenuOptions) },
-          { where: { catererId: req.caterer.id, createdAt: today } }
+          { where: { catererId: req.caterer.id, createdAt: today } },
         );
-        const mealIndex = mealMenuOptions.findIndex(mealMenuOption => mealMenuOption.id === Number(mealId));
+        mealMenuOptions.findIndex(mealMenuOption => mealMenuOption.id === Number(mealId));
         await Meal.update({ where: { id: mealId } });
       }
       return res.status(200).json({
         status: 'success',
         message: 'Meal Added to Menu',
-        data: menuMeals
+        data: menuMeals,
       });
     } catch (err) {
       return res.status(500).json({
         status: 'error',
-        message: err.message
+        message: err.message,
       });
     }
   }

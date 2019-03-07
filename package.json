@@ -29,6 +29,7 @@
 	"homepage": "https://github.com/wptechprodigy/book-a-meal#readme",
 	"dependencies": {
 		"@babel/polyfill": "^7.2.5",
+		"bcrypt": "^3.0.4",
 		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.18.3",
 		"cors": "^2.8.5",

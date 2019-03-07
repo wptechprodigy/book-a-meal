@@ -2,7 +2,7 @@ import trimRequest from 'trim-request';
 import { Router } from 'express';
 import AuthController from '../controllers/auth';
 import MealMiddleware from '../middleware/meals.middleware';
-import MenuController from '../controller/menus.controller';
+import MenuController from '../controllers/menus.controllers';
 
 const router = Router();
 
@@ -10,14 +10,14 @@ router.get(
   '/menu/',
   AuthController.checkForToken,
   AuthController.verifyUserToken,
-  MenuController.getMenus
+  MenuController.getMenus,
 );
 
 router.get(
   '/menu/caterer',
   AuthController.checkForToken,
   AuthController.verifyAdminToken,
-  MenuController.getMenuForAParticularDay
+  MenuController.getMenuForAParticularDay,
 );
 
 router.post(
@@ -26,7 +26,7 @@ router.post(
   AuthController.checkForToken,
   AuthController.verifyAdminToken,
   MealMiddleware.validateAddMealToMenu,
-  MenuController.addMealToMenu
+  MenuController.addMealToMenu,
 );
 
-export default routes;
+export default router;

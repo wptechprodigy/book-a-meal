@@ -33,9 +33,6 @@ class AuthController {
   static async verifyAdminToken(req, res, next) {
     try {
       const decoded = await jwt.verify(req.jwt, secret);
-      // if (!decoded.isCaterer) {
-      //   throw new Error('Unauthorized');
-      // }
       req.caterer = decoded.caterer;
       next();
       return true;

@@ -23,10 +23,10 @@ class CatererMiddleware extends UserMiddleware {
       return res.status(400).json({
         status: 'error',
         message: error.details[0].message,
-        type: 'validation'
+        type: 'validation',
       });
     }
   }
 }
 
-export default CatererMiddleware
+export default CatererMiddleware;

@@ -3,21 +3,22 @@ import { config } from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import sequelize from './utils/database';
 import fileUpload from 'express-fileupload';
-import swaggerUi from 'swagger-ui-express';
+// import swaggerUi from 'swagger-ui-express';
+import sequelize from './utils/database';
 import User from './models/user';
 import Caterer from './models/caterer';
 import Meal from './models/meals';
-import Menu from './models/menu';
-import swaggerDocument from './swagger.json';
+import Menu from './models/menus';
+import Order from './models/orders';
+// import swaggerDocument from './swagger.json';
 
 // Routes
 import userRoutes from './routes/users.routes';
 import catererRoutes from './routes/caterers.routes';
 import mealRoutes from './routes/meals.routes';
 import menuRoutes from './routes/menus.routes';
-// import orderRoutes from './routes/orders.routes';
+import orderRoutes from './routes/orders.routes';
 
 config();
 
@@ -27,7 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(fileUpload());
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const rootRoute = '/api/v1';
 
@@ -35,7 +36,7 @@ app.use(rootRoute, userRoutes);
 app.use(rootRoute, catererRoutes);
 app.use(rootRoute, mealRoutes);
 app.use(rootRoute, menuRoutes);
-// app.use(rootRoute, orderRoutes);
+app.use(rootRoute, orderRoutes);
 
 User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
 Order.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
@@ -49,9 +50,8 @@ app.get('/', (req, res) => {
   });
 });
 
-
 sequelize
-  .sync()
+  .sync({ force: true })
   .then(() => {
     console.log('DB Connection has been established');
     app.listen(process.env.PORT, null, null, () => {
