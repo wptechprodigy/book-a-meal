@@ -1,7 +1,5 @@
 import Order from '../models/orders';
-// import OrderItem from '../models/orderItem';
 import Meal from '../models/meals';
-// import Menu from '../models/menus';
 
 class OrderController {
   static async addAnOrder(req, res) {
