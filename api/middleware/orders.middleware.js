@@ -9,7 +9,7 @@ class OrderMiddleware {
           .required(),
         quantity: Joi.number()
           .min(1)
-          .required()
+          .required(),
       };
       await Joi.validate(req.body, schema);
       next();
@@ -26,7 +26,7 @@ class OrderMiddleware {
   static async validateModifyOrder(req, res, next) {
     try {
       const schema = {
-        action: Joi.string().required()
+        action: Joi.string().required(),
       };
       await Joi.validate(req.body, schema);
       if (!['increase', 'decrease', 'delete'].includes(req.body.action)) {

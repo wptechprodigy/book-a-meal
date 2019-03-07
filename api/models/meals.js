@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import sequelize from '../util/database';
+import sequelize from '../utils/database';
 
 const Meal = sequelize.define('meal', {
   id: {

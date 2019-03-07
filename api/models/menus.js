@@ -1,22 +1,23 @@
 import Sequelize from 'sequelize';
-import sequelize from '../util/database';
+import sequelize from '../utils/database';
 
 const Menu = sequelize.define('menu', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
-    allowNull: false
+    allowNull: false,
+    primaryKey: true,
   },
   mealOptions: {
-    type: Sequelize.ARRAY,
-    allowNull: false
+    type: Sequelize.JSON,
+    allowNull: false,
   },
   catererId: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: false,
   },
   createdAt: Sequelize.DATEONLY,
-  updatedAt: Sequelize.DATEONLY
+  updatedAt: Sequelize.DATEONLY,
 });
 
 export default Menu;

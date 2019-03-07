@@ -1,32 +1,32 @@
 import Sequelize from 'sequelize';
-import sequelize from '../util/database';
+import sequelize from '../utils/database';
 
 const Caterer = sequelize.define('caterer', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     allowNull: false,
-    primaryKey: true
+    primaryKey: true,
   },
   name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   phone: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   email: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true
+    unique: true,
   },
   password: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   createdAt: Sequelize.DATEONLY,
-  updatedAt: Sequelize.DATEONLY
+  updatedAt: Sequelize.DATEONLY,
 });
 
 export default Caterer;

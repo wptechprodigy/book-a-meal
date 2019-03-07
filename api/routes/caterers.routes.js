@@ -9,14 +9,14 @@ router.post(
   '/auth/caterer/signup',
   trimRequest.body,
   CatererMiddleware.validateRegisteration,
-  CatererController.registerCaterer
+  CatererController.registerCaterer,
 );
 
 router.post(
   '/auth/caterer/login',
   trimRequest.body,
   CatererMiddleware.validateLogin,
-  CatererController.loginCaterer
+  CatererController.loginCaterer,
 );
 
 export default router;

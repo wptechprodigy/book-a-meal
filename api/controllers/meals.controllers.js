@@ -4,10 +4,14 @@ import Meal from '../models/meals';
 class MealController {
   static async addMealOption(req, res) {
     try {
-      const { name, price } = req.body;
+      const { name, price, description } = req.body;
       const { image } = req.files;
       const imageUrl = `/api/images/${image.name}`;
-      const meal = await Meal.create({ name, price, imageUrl, description, catererId: req.caterer.id });
+      const meal = await Meal.create(
+        {
+          name, price, imageUrl, description, catererId: req.caterer.id,
+        },
+      );
       await image.mv(`.${imageUrl}`);
       return res.status(201).json({
         status: 'success',
@@ -39,14 +43,12 @@ class MealController {
         message: 'Meals retrieved successfully',
         data: meal,
       });
-
     } catch (error) {
       return res.status(500).json({
         status: 'error',
         message: 'Meal could not retrieved',
       });
     }
-
   }
 
   static async fetchAllMeals(req, res) {
@@ -55,7 +57,7 @@ class MealController {
       return res.status(200).json({
         status: 'success',
         message: 'Meals retrieved successfully',
-        data: meals
+        data: meals,
       });
     } catch (error) {
       return res.status(500).json({
@@ -79,7 +81,7 @@ class MealController {
       if (req.files !== null) {
         const { image } = req.files;
         const imageUrl = `/api/images/${image.name}`;
-        fs.unlink(`.${meal.imageUrl}`, error => {
+        fs.unlink(`.${meal.imageUrl}`, (error) => {
           if (error) throw new Error(error.message);
         });
         mealUpdate.imageUrl = imageUrl;
@@ -87,8 +89,14 @@ class MealController {
       } else {
         mealUpdate.imageUrl = meal.imageUrl;
       }
-      const { name, price, description, imageUrl } = mealUpdate;
-      await Meal.update({ name, price, description, imageUrl }, { where: { id: req.params.id } });
+      const {
+        name, price, description, imageUrl,
+      } = mealUpdate;
+      await Meal.update(
+        {
+          name, price, description, imageUrl,
+        }, { where: { id: req.params.id } },
+      );
       return res.status(200).json({
         status: 'success',
         message: 'Meal updated successfully',
@@ -108,7 +116,7 @@ class MealController {
       if (!meal) {
         throw new Error(`Meal with ID ${id} does not exist`);
       }
-      fs.unlink(`.${meal.imageUrl}`, error => {
+      fs.unlink(`.${meal.imageUrl}`, (error) => {
         if (error) throw new Error(error.message);
       });
       await meal.destroy();
