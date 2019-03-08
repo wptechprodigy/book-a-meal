@@ -60,12 +60,12 @@ class MenuController {
       return res.status(200).json({
         status: 'success',
         message: 'Meal Added to Menu',
-        data: menuMeals,
+        data: mealMenuOptions,
       });
     } catch (err) {
       return res.status(500).json({
         status: 'error',
-        message: err.message,
+        message: 'Meal not added successfully',
       });
     }
   }
