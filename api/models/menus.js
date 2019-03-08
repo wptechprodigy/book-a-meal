@@ -9,7 +9,7 @@ const Menu = sequelize.define('menu', {
     primaryKey: true,
   },
   mealOptions: {
-    type: Sequelize.JSON,
+    type: Sequelize.ARRAY(Sequelize.INTEGER),
     allowNull: false,
   },
   catererId: {
