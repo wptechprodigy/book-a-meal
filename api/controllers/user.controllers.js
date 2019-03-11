@@ -19,7 +19,7 @@ class UserController {
       });
       return res.status(201).json({
         status: 'success',
-        message: 'User Registered',
+        message: 'Registration successful',
         token: `Bearer ${jwtToken}`,
         user: safeUser,
       });
