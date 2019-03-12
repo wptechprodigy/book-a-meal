@@ -25,7 +25,7 @@ describe('User Authentication Endpoints', () => {
         .post(`${URL_PREFIX}/auth/signup`)
         .send(user)
         .then((res) => {
-          res.should.have.status(500);
+          res.should.have.status(400);
           res.body.should.have.status('error');
           res.body.should.be.a('validation');
           done();
@@ -42,7 +42,7 @@ describe('User Authentication Endpoints', () => {
         .post(`${URL_PREFIX}/auth/signup`)
         .send(user)
         .then((res) => {
-          res.should.have.status(500);
+          res.should.have.status(400);
           res.body.should.have.status('error');
           res.body.should.be.a('validation');
           done();
@@ -66,6 +66,23 @@ describe('User Authentication Endpoints', () => {
           res.body.should.have.property('message').eql('Resgistration successful');
           res.body.should.have.property('token');
           res.body.should.have.property('user').eql(user);
+          done();
+        })
+        .catch(err => console.log('POST /auth/signup', err.message));
+    });
+    it("it should not allow user to signup again with the same email", done => {
+      const user = {
+        name: 'Sanni Bello',
+        email: 'sanni@testdomain.com',
+        password: 'password',
+      };
+      chai
+        .request(app)
+        .post(`${URL_PREFIX}/auth/signup`)
+        .send(user)
+        .then(res => {
+          res.should.have.status(500);
+          res.body.should.have.status('error');
           done();
         })
         .catch(err => console.log('POST /auth/signup', err.message));
