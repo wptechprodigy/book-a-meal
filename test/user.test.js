@@ -64,6 +64,7 @@ describe('User Authentication Endpoints', () => {
           res.body.should.be.a('object');
           res.body.should.have.property('status').eql('Success');
           res.body.should.have.property('message').eql('Resgistration successful');
+          res.body.should.have.property('token');
           res.body.should.have.property('user').eql(user);
           done();
         })
@@ -134,6 +135,8 @@ describe('User Authentication Endpoints', () => {
           res.body.should.be.a('object');
           res.body.should.have.property('status').eql('Success');
           res.body.should.have.property('message').eql('Log-in successful');
+          res.body.should.have.property('token');
+          res.body.should.have.property('user').eql(user.email);
           done();
         })
         .catch(err => console.log('Login - POST /auth/login', err.message));
