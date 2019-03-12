@@ -81,51 +81,51 @@ describe('Orders', () => {
   /*
     Test /PUT route
   */
-  describe('/PUT order', () => {
-    it('it should UPDATE an order', (done) => {
-      const order = {
-        mealId: 3,
-        quantity: 5,
-      };
-      chai.request(app)
-        .put(`/api/v1/orders/${order.mealId}`)
-        .send(
-          {
-            mealId: 3,
-            quantity: 4,
-          },
-        )
-        .end((err, res) => {
-          res.should.have.status(201);
-          res.body.should.be.a('object');
-          res.body.should.have.property('status').eql('Success');
-          res.body.should.have.property('message').eql('Order updated successfully');
-          res.body.should.have.property('data');
-          res.body.data.should.be.a('object');
-          res.body.data.should.have.property('mealId').eql(3);
-          res.body.data.should.have.property('quantity').eql(4);
-          done();
-        });
-    });
-  });
-  /*
-    Test /PUT/:mealId Meal route
-  */
-  describe('/DELETE/:mealId order', () => {
-    it('it should DELETE an order by a given mealId', (done) => {
-      // const meal = {
-      //   id: 3,
-      //   name: 'Jollof rice with salad',
-      //   price: '300',
-      //   description: 'A little description',
-      // };
-      const id = 1;
-      chai.request(app)
-        .delete(`/api/v1/orders/${id}`)
-        .end((err, res) => {
-          res.should.have.status(204);
-          done();
-        });
-    });
-  });
+  // describe('/PUT order', () => {
+  //   it('it should UPDATE an order', (done) => {
+  //     const order = {
+  //       mealId: 3,
+  //       quantity: 5,
+  //     };
+  //     chai.request(app)
+  //       .put(`/api/v1/orders/${order.mealId}`)
+  //       .send(
+  //         {
+  //           mealId: 3,
+  //           quantity: 4,
+  //         },
+  //       )
+  //       .end((err, res) => {
+  //         res.should.have.status(201);
+  //         res.body.should.be.a('object');
+  //         res.body.should.have.property('status').eql('Success');
+  //         res.body.should.have.property('message').eql('Order updated successfully');
+  //         res.body.should.have.property('data');
+  //         res.body.data.should.be.a('object');
+  //         res.body.data.should.have.property('mealId').eql(3);
+  //         res.body.data.should.have.property('quantity').eql(4);
+  //         done();
+  //       });
+  //   });
+  // });
+  // /*
+  //   Test /PUT/:mealId Meal route
+  // */
+  // describe('/DELETE/:mealId order', () => {
+  //   it('it should DELETE an order by a given mealId', (done) => {
+  //     // const meal = {
+  //     //   id: 3,
+  //     //   name: 'Jollof rice with salad',
+  //     //   price: '300',
+  //     //   description: 'A little description',
+  //     // };
+  //     const id = 1;
+  //     chai.request(app)
+  //       .delete(`/api/v1/orders/${id}`)
+  //       .end((err, res) => {
+  //         res.should.have.status(204);
+  //         done();
+  //       });
+  //   });
+  // });
 });
