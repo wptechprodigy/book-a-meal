@@ -89,7 +89,7 @@ describe('User Authentication Endpoints', () => {
           res.body.should.be.a('validation');
           done();
         })
-        .catch(err => console.log('Login /POST /auth/login', err.message));
+        .catch(err => console.log('Login - POST /auth/login', err.message));
     });
     it('it should validate user login credentials (email test)', (done) => {
       const user = {
@@ -99,6 +99,7 @@ describe('User Authentication Endpoints', () => {
       chai
         .request(app)
         .post(`${URL_PREFIX}/auth/login`)
+        .set('Accept', 'application/json')
         .send(user)
         .then((res) => {
           res.should.have.status(400);
@@ -106,7 +107,7 @@ describe('User Authentication Endpoints', () => {
           res.body.should.be.a('validation');
           done();
         })
-        .catch(err => console.log('Login /POST /auth/login', err.message));
+        .catch(err => console.log('Login - POST /auth/login', err.message));
     });
     it('it should not allow non-registered user to login', (done) => {
       const user = {
@@ -116,13 +117,14 @@ describe('User Authentication Endpoints', () => {
       chai
         .request(app)
         .post(`${URL_PREFIX}/auth/login`)
+        .set('Accept', 'application/json')
         .send(user)
         .then((res) => {
           res.should.have.status(500);
           res.body.should.have.status('error');
           done();
         })
-        .catch(err => console.log('Login - /POST /auth/login', err.message));
+        .catch(err => console.log('Login - POST /auth/login', err.message));
     });
     it('POST /auth/login - User Can Login', (done) => {
       const user = {
@@ -132,37 +134,41 @@ describe('User Authentication Endpoints', () => {
       chai
         .request(app)
         .post(`${URL_PREFIX}/auth/login`)
-        .send({
-          email: 'roger@test.com',
-          password: 'password',
-        })
+        .set('Accept', 'application/json')
+        .send(user)
         .then((res) => {
-          expect(res).to.have.status(200);
-          assert.equal(res.body.status, 'success');
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.should.have.property('status').eql('Success');
+          res.body.should.have.property('message').eql('Log-in successful');
           done();
         })
-        .catch(err => console.log('POST /auth/login', err.message));
+        .catch(err => console.log('Login - POST /auth/login', err.message));
     });
-    it("POST /auth/login - User Can't login with incorrect password", (done) => {
+    it("it should not permit login with incorrect password", (done) => {
+      const user = {
+        email: 'sanni@testdomain.com',
+        password: 'password132',
+      };
       chai
         .request(app)
         .post(`${URL_PREFIX}/auth/login`)
-        .send({
-          email: 'roger@test.com',
-          password: 'password111',
-        })
+        .set('Accept', 'application/json')
+        .send(user)
         .then((res) => {
-          expect(res).to.have.status(500);
-          assert.equal(res.body.status, 'error');
+          res.should.have.status(500);
+          res.body.should.be.a('object');
+          res.body.should.have.property('status').eql('error');
+          res.body.should.have.property('message').eql('Log-in failed');
           done();
         })
-        .catch(err => console.log('POST /auth/login', err.message));
+        .catch(err => console.log('Login - POST /auth/login', err.message));
     });
   });
 });
 
 after((done) => {
-  User.destroy({ where: { email: 'roger@test.com' } }).then(() => {
+  User.destroy({ where: { email: 'sanni@testdomain.com' } }).then(() => {
     done();
   });
 });

@@ -43,6 +43,7 @@
 		"pg-hstore": "^2.3.2",
 		"sequelize": "^4.43.0",
 		"sequelize-cli": "^5.4.0",
+		"streamifier": "^0.1.1",
 		"swagger-ui-express": "^4.0.2",
 		"trim-request": "^1.0.6",
 		"uuid": "^3.3.2"
