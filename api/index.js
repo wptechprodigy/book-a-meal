@@ -24,6 +24,8 @@ config();
 
 const app = express();
 
+const PORT = process.env.PORT || 9000;
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -54,7 +56,7 @@ sequelize
   .sync() // force: true
   .then(() => {
     console.log('DB Connection has been established');
-    app.listen(process.env.PORT, null, null, () => {
+    app.listen(PORT, null, null, () => {
       app.emit('dbConnected');
     });
   })
