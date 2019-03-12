@@ -22,7 +22,6 @@ describe('User Authentication Endpoints', () => {
       };
       chai
         .request(app)
-        .set('Accept', 'application/json')
         .post(`${URL_PREFIX}/auth/signup`)
         .send(user)
         .then((res) => {
@@ -40,7 +39,6 @@ describe('User Authentication Endpoints', () => {
       };
       chai
         .request(app)
-        .set('Accept', 'application/json')
         .post(`${URL_PREFIX}/auth/signup`)
         .send(user)
         .then((res) => {
@@ -59,7 +57,6 @@ describe('User Authentication Endpoints', () => {
       };
       chai
         .request(app)
-        .set('Accept', 'application/json')
         .post(`${URL_PREFIX}/auth/signup`)
         .send(user)
         .then((res) => {
@@ -78,7 +75,6 @@ describe('User Authentication Endpoints', () => {
     it('it should validate user login credentials (password test)', (done) => {
       chai
         .request(app)
-        .set('Accept', 'application/json')
         .post(`${URL_PREFIX}/auth/login`)
         .send({
           email: 'sanni@testdomain.com',
@@ -99,7 +95,6 @@ describe('User Authentication Endpoints', () => {
       chai
         .request(app)
         .post(`${URL_PREFIX}/auth/login`)
-        .set('Accept', 'application/json')
         .send(user)
         .then((res) => {
           res.should.have.status(400);
@@ -117,7 +112,6 @@ describe('User Authentication Endpoints', () => {
       chai
         .request(app)
         .post(`${URL_PREFIX}/auth/login`)
-        .set('Accept', 'application/json')
         .send(user)
         .then((res) => {
           res.should.have.status(500);
@@ -134,7 +128,6 @@ describe('User Authentication Endpoints', () => {
       chai
         .request(app)
         .post(`${URL_PREFIX}/auth/login`)
-        .set('Accept', 'application/json')
         .send(user)
         .then((res) => {
           res.should.have.status(200);
@@ -153,7 +146,6 @@ describe('User Authentication Endpoints', () => {
       chai
         .request(app)
         .post(`${URL_PREFIX}/auth/login`)
-        .set('Accept', 'application/json')
         .send(user)
         .then((res) => {
           res.should.have.status(500);
