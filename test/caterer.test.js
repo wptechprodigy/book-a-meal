@@ -3,7 +3,7 @@ import chaiHTTP from 'chai-http';
 import app from '../api/index';
 import Caterer from '../api/models/caterer';
 
-const { assert, expect, use } = chai;
+chai.should();
 
 use(chaiHTTP);
 
@@ -18,9 +18,10 @@ before((done) => {
 beforeEach((done) => {
   done();
 });
-describe('Caterer Auth Endpoints', () => {
-  context('Signup', () => {
-    it('POST /auth/caterer/signup - Caterer SignUp Validation Test', (done) => {
+describe('Caterer Endpoints Authentication', () => {
+  // Caterer signup
+  describe('POST /auth/caterer/signup', () => {
+    it('it should not allow caterer to signup without password', (done) => {
       const caterer = {
         name: 'Sanni Bello',
         email: 'sanni@testdomain.com',
@@ -38,7 +39,7 @@ describe('Caterer Auth Endpoints', () => {
         })
         .catch(err => console.log('POST /auth/caterer/signup', err.message));
     });
-    it('POST /auth/caterer/signup - Caterer Can Sign Up', (done) => {
+    it('it should allow caterer signup with complete details', (done) => {
       const caterer = {
         name: 'Sanni Bello',
         email: 'sanni@testdomain.com',
@@ -60,7 +61,7 @@ describe('Caterer Auth Endpoints', () => {
         })
         .catch(err => console.log('POST /auth/caterer/signup', err.message));
     });
-    it("POST /auth/caterer/signup - Caterer Can't signup again with the same email", (done) => {
+    it('it should not allow caterer signup with same details', (done) => {
       const caterer = {
         name: 'Sanni Bello',
         email: 'sanni@testdomain.com',
@@ -80,8 +81,8 @@ describe('Caterer Auth Endpoints', () => {
     });
   });
 
-  describe('Login', () => {
-    it('POST /auth/caterer/login - Caterer Login Validation Test(Required)', (done) => {
+  describe('Login POST /auth/caterer/login', () => {
+    it('it should not allow caterer to login without password', (done) => {
       const caterer = {
         email: 'sanni@testdomain.com',
       };
@@ -97,7 +98,7 @@ describe('Caterer Auth Endpoints', () => {
         })
         .catch(err => console.log('POST /auth/caterer/login', err.message));
     });
-    it('POST /auth/caterer/login - Caterer Cannot Login without being registered', (done) => {
+    it('it should not allow login without prior registration', (done) => {
       const caterer = {
         email: 'nonregistered@testdomain.com',
         password: 'password',
@@ -113,7 +114,7 @@ describe('Caterer Auth Endpoints', () => {
         })
         .catch(err => console.log('POST /auth/caterer/login', err.message));
     });
-    it('POST /auth/caterer/login - Caterer Can Login', (done) => {
+    it('it should allow caterer to login with complete details', (done) => {
       const caterer = {
         email: 'sanni@testdomain.com',
         password: 'password',
@@ -133,7 +134,7 @@ describe('Caterer Auth Endpoints', () => {
         })
         .catch(err => console.log('POST /auth/caterer/login', err.message));
     });
-    it("POST /auth/caterer/login - Caterer Can't login with incorrect password", (done) => {
+    it('it should not allow login using an incorrect password', (done) => {
       const caterer = {
         email: 'sanni@testdomain.com',
         password: 'password131',
