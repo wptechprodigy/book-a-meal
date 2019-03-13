@@ -63,7 +63,7 @@ describe('User Authentication Endpoints', () => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.property('status').eql('Success');
-          res.body.should.have.property('message').eql('Resgistration successful');
+          res.body.should.have.property('message').eql('Registration successful');
           res.body.should.have.property('token');
           res.body.should.have.property('user').eql(user);
           done();
