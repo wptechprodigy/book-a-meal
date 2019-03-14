@@ -15,7 +15,7 @@ class OrderController {
       } else {
         const newOrderItem = await Order.create({ mealId, quantity, userId: req.user.id });
         response.body = {
-          status: 'success',
+          status: 'Success',
           message: 'Meal added to orders successfully',
           data: newOrderItem,
         };
@@ -33,7 +33,7 @@ class OrderController {
     try {
       const orders = await Order.findAll({ where: { catererId: req.caterer.id } });
       return res.status(200).json({
-        status: 'success',
+        status: 'Success',
         message: 'Orders retrieved successfully',
         data: orders,
       });
@@ -65,7 +65,7 @@ class OrderController {
       });
       const order = { meals, total };
       return res.status(200).json({
-        status: 'success',
+        status: 'Success',
         message: 'Orders retrieved successfully',
         data: order,
       });
@@ -104,7 +104,7 @@ class OrderController {
         await Order.destroy({ where: { id: orderItem.id } });
       }
       return res.status(200).json({
-        status: 'success',
+        status: 'Success',
         message: 'Order Updated',
       });
     } catch (err) {
