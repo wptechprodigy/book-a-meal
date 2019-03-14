@@ -2,12 +2,11 @@ import chai from 'chai';
 import chaiHTTP from 'chai-http';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
-import app from '../URL/index';
-import User from '../URL/models/user';
-import Caterer from '../URL/models/caterer';
-import Meal from '../URL/models/meals';
-import OrderItem from '../URL/models/orderItem';
-import Menu from '../URL/models/menu';
+import app from '../api/index';
+import User from '../api/models/user';
+import Caterer from '../api/models/caterer';
+import Meal from '../api/models/meals';
+import Menu from '../api/models/menu';
 
 const secret = process.env.JWT_SECRET;
 
@@ -15,7 +14,7 @@ chai.should();
 
 chai.use(chaiHTTP);
 
-const URL_PREFIX = '/URL/v1';
+const URL_PREFIX = '/api/v1';
 
 const userPayload = {
 	name: 'Sanni Bello',
