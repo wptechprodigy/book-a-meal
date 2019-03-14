@@ -78,7 +78,7 @@ describe('Meals Endpoints with Auth', () => {
         .get(`${URL_PREFIX}/meals/`)
         .then(res => {
           res.should.have.status(401);
-          res.body.should.have.status('error');
+          res.body.should.have.property('status').eql('error');
           done();
         })
         .catch(err => console.log('GET /meals/', err.message));
@@ -102,7 +102,7 @@ describe('Meals Endpoints with Auth', () => {
             .set('Authorization', `Bearer ${token}`)
             .then(res => {
               res.should.have.status(401);
-              res.body.should.have.status('error');
+              res.body.should.have.property('status').eql('error');
               done();
             })
             .catch(err => console.log('GET /meals/', err.message));
@@ -153,7 +153,7 @@ describe('Meals Endpoints with Auth', () => {
         })
         .then(res => {
           res.should.have.status(401);
-          res.body.should.have.status('error');
+          res.body.should.have.property('status').eql('error');
           done();
         })
         .catch(err => console.log('POST /meals/', err.message));
@@ -186,7 +186,7 @@ describe('Meals Endpoints with Auth', () => {
             })
             .then(res => {
               res.should.have.status(401);
-              res.body.should.have.status('error');
+              res.body.should.have.property('status').eql('error');
               done();
             })
             .catch(err => console.log('POST /meals/', err.message));
@@ -251,7 +251,7 @@ describe('Meals Endpoints with Auth', () => {
                 })
                 .then(res => {
                   res.should.have.status(401);
-                  res.body.should.have.status('error');
+                  res.body.should.have.property('status').eql('error');
                   done();
                 })
                 .catch(err => console.log('PUT /meals/:mealId', err.message));
@@ -282,7 +282,7 @@ describe('Meals Endpoints with Auth', () => {
                     })
                     .then(res => {
                       res.should.have.status(401);
-                      res.body.should.have.status('error');
+                      res.body.should.have.property('status').eql('error');
                       done();
                     })
                     .catch(err => console.log('POST /meals/', err.message));
@@ -357,7 +357,7 @@ describe('Meals Endpoints with Auth', () => {
                 .delete(`${URL_PREFIX}/meals/${meal.id}`)
                 .then(res => {
                   res.should.have.status(401);
-                  res.body.should.have.status('error');
+                  res.body.should.have.property('status').eql('error');
                   done();
                 })
                 .catch(err => console.log('DELETE /meals/:mealId', err.message));
@@ -381,7 +381,7 @@ describe('Meals Endpoints with Auth', () => {
                     .set('Authorization', `Bearer ${token}`)
                     .then(res => {
                       res.should.have.status(500);
-                      res.body.should.have.status('error');
+                      res.body.should.have.property('status').eql('error');
                       done();
                     })
                     .catch(err => console.log('DELETE /meals/:mealId', err.message));
