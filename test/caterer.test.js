@@ -33,8 +33,9 @@ describe('Caterer Endpoints Authentication', () => {
         .send(caterer)
         .then((res) => {
           res.should.have.status(400);
-          res.body.should.have.status('error');
-          res.body.should.be.a('validation');
+          res.body.should.be.a('object');
+          res.body.should.have.property('status').eql('error');
+          res.body.should.have.property('type').eql('validation');
           done();
         })
         .catch(err => console.log('POST /auth/caterer/signup', err.message));
@@ -54,7 +55,7 @@ describe('Caterer Endpoints Authentication', () => {
           res.should.have.status(201);
           res.body.should.be.a('object');
           res.body.should.have.property('status').eql('Success');
-          res.body.should.have.property('message').eql('Resgistration successful');
+          res.body.should.have.property('message').eql('Registration successful');
           res.body.should.have.property('token');
           res.body.should.have.property('user').eql(caterer);
           done();

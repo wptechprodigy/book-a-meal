@@ -24,8 +24,8 @@ class CatererController {
         expiresIn: 86400,
       });
       return res.status(201).json({
-        status: 'success',
-        message: 'Caterer Registered',
+        status: 'Success',
+        message: 'Registration successful',
         token: `Bearer ${jwtToken}`,
         caterer: safeCaterer,
       });
@@ -58,8 +58,8 @@ class CatererController {
         expiresIn: 86400,
       });
       return res.status(200).json({
-        status: 'success',
-        message: 'Caterer Logged In',
+        status: 'Success',
+        message: 'Log-in successful',
         token: `Bearer ${jwtToken}`,
         user: safeCaterer,
       });
