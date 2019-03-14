@@ -26,7 +26,7 @@ describe('User Authentication Endpoints', () => {
         .send(user)
         .then((res) => {
           res.should.have.status(400);
-          res.body.should.have.status('error');
+          res.body.should.have.property('status').eql('error');
           res.body.should.be.a('validation');
           done();
         })
@@ -43,7 +43,7 @@ describe('User Authentication Endpoints', () => {
         .send(user)
         .then((res) => {
           res.should.have.status(400);
-          res.body.should.have.status('error');
+          res.body.should.have.property('status').eql('error');
           res.body.should.be.a('validation');
           done();
         })
@@ -82,7 +82,7 @@ describe('User Authentication Endpoints', () => {
         .send(user)
         .then(res => {
           res.should.have.status(500);
-          res.body.should.have.status('error');
+          res.body.should.have.property('status').eql('error');
           done();
         })
         .catch(err => console.log('POST /auth/signup', err.message));
@@ -99,7 +99,7 @@ describe('User Authentication Endpoints', () => {
         })
         .then((res) => {
           res.should.have.status(400);
-          res.body.should.have.status('error');
+          res.body.should.have.property('status').eql('error');
           res.body.should.be.a('validation');
           done();
         })
@@ -116,7 +116,7 @@ describe('User Authentication Endpoints', () => {
         .send(user)
         .then((res) => {
           res.should.have.status(400);
-          res.body.should.have.status('error');
+          res.body.should.have.property('status').eql('error');
           res.body.should.be.a('validation');
           done();
         })
@@ -133,7 +133,7 @@ describe('User Authentication Endpoints', () => {
         .send(user)
         .then((res) => {
           res.should.have.status(500);
-          res.body.should.have.status('error');
+          res.body.should.have.property('status').eql('error');
           done();
         })
         .catch(err => console.log('Login - POST /auth/login', err.message));
