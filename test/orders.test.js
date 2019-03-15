@@ -6,7 +6,7 @@ import app from '../api/index';
 import User from '../api/models/user';
 import Caterer from '../api/models/caterer';
 import Meal from '../api/models/meals';
-import Menu from '../api/models/menu';
+import Menu from '../api/models/menus';
 
 const secret = process.env.JWT_SECRET;
 
