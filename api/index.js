@@ -51,7 +51,7 @@ app.get('/', (req, res) => {
 });
 
 sequelize
-  .sync({ force: true }) // force: true
+  .sync() // force: true
   .then(() => {
     console.log('DB Connection has been established');
     app.listen(process.env.PORT, null, null, () => {

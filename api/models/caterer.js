@@ -1,32 +1,35 @@
 import Sequelize from 'sequelize';
 import sequelize from '../utils/database';
+import Meal from './meals';
+import Menu from './menus';
+import Order from './orders';
 
 const Caterer = sequelize.define('caterer', {
-  id: {
-    type: Sequelize.INTEGER,
-    autoIncrement: true,
-    allowNull: false,
-    primaryKey: true,
-  },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  phone: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  createdAt: Sequelize.DATEONLY,
-  updatedAt: Sequelize.DATEONLY,
+	id: {
+		type: Sequelize.INTEGER,
+		autoIncrement: true,
+		allowNull: false,
+		primaryKey: true,
+	},
+	name: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	phone: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	email: {
+		type: Sequelize.STRING,
+		allowNull: false,
+		unique: true,
+	},
+	password: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
+	createdAt: Sequelize.DATEONLY,
+	updatedAt: Sequelize.DATEONLY,
 });
 
 Caterer.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
