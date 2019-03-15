@@ -29,4 +29,8 @@ const Caterer = sequelize.define('caterer', {
   updatedAt: Sequelize.DATEONLY,
 });
 
+Caterer.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
+Caterer.hasMany(Meal, { constraints: true, onDelete: 'CASCADE' });
+Caterer.hasMany(Menu, { constraints: true, onDelete: 'CASCADE' });
+
 export default Caterer;

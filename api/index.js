@@ -38,10 +38,10 @@ app.use(rootRoute, mealRoutes);
 app.use(rootRoute, menuRoutes);
 app.use(rootRoute, orderRoutes);
 
-User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
-Order.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
-Meal.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
-Menu.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
+// User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
+// Order.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
+// Meal.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
+// Menu.belongsTo(Caterer, { constraints: true, onDelete: 'CASCADE' });
 
 app.get('/', (req, res) => {
   res.status(200).send({

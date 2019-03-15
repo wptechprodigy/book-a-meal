@@ -25,4 +25,6 @@ const User = sequelize.define('user', {
   updatedAt: Sequelize.DATEONLY,
 });
 
+User.hasMany(Order, { constraints: true, onDelete: 'CASCADE' });
+
 export default User;
