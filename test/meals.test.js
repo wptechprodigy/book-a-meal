@@ -158,7 +158,7 @@ describe('Meals Endpoints with Auth', () => {
         })
         .catch(err => console.log('POST /meals/', err.message));
     });
-    it(`POST ${URL_PREFIX}/meals/ - Add Meal Option - (Validation Test)`, done => {
+    it(`it should validate caterer before ability to add a meal option`, done => {
       Caterer.findOne({ where: { email: catererPayload.email } })
         .then(caterer => {
           const token = jwt.sign(
