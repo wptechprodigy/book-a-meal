@@ -18,8 +18,8 @@ class UserController {
         expiresIn: 86400,
       });
       return res.status(201).json({
-        status: 'success',
-        message: 'User Registered',
+        status: 'Success',
+        message: 'Registration successful',
         token: `Bearer ${jwtToken}`,
         user: safeUser,
       });
@@ -51,8 +51,8 @@ class UserController {
         expiresIn: 86400,
       });
       return res.status(200).json({
-        status: 'success',
-        message: 'User Logged In',
+        status: 'Success',
+        message: 'Log-in successful',
         token: `Bearer ${jwtToken}`,
         user: safeUser,
       });

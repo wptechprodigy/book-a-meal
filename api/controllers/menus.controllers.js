@@ -13,7 +13,7 @@ class MenuController {
     const today = MenuController.generateDate();
     const menus = await Menu.findAll({ where: { createdAt: today } });
     return res.status(200).json({
-      status: 'success',
+      status: 'Success',
       message: 'Menus retrieved successfully',
       data: menus,
     });
@@ -23,7 +23,7 @@ class MenuController {
     const today = MenuController.generateDate();
     const menu = await Menu.findOne({ where: { createdAt: today, catererId: req.caterer.id } });
     return res.status(200).json({
-      status: 'success',
+      status: 'Success',
       message: 'Menu retrieved successfully',
       data: menu,
     });
@@ -58,7 +58,7 @@ class MenuController {
         await Meal.update({ where: { id: mealId } });
       }
       return res.status(200).json({
-        status: 'success',
+        status: 'Success',
         message: 'Meal Added to Menu',
         data: mealMenuOptions,
       });
