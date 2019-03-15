@@ -5,7 +5,7 @@ import Caterer from '../api/models/caterer';
 
 chai.should();
 
-use(chaiHTTP);
+chai.use(chaiHTTP);
 
 const URL_PREFIX = '/api/v1';
 
