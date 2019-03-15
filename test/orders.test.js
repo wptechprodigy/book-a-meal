@@ -49,35 +49,35 @@ const user5Payload = {
 const catererPayload = {
 	name: 'Sanni Bello',
 	email: 'sanni@testdomain.com',
-	phone: 09012345678,
+	phone: '09012345678',
 	password: 'password',
 };
 
 const caterer2Payload = {
 	name: 'Alabede Oniresi',
 	email: 'a_oniresi@testdomain.com',
-	phone: 09012345678,
+	phone: '09012345678',
 	password: 'password',
 };
 
 const caterer3Payload = {
 	name: 'Bello Gidado',
 	email: 'gidadob@test2domain.com',
-	phone: 09012345678,
+	phone: '09012345678',
 	password: 'password',
 };
 
 const caterer4Payload = {
 	name: 'Bello Gideon',
 	email: 'giddybello@test2domain.com',
-	phone: 09012345678,
+	phone: '09012345678',
 	password: 'password',
 };
 
 const caterer5Payload = {
 	name: 'Bright Osadolo',
 	email: 'bosadolo@test2domain.com',
-	phone: 09012345678,
+	phone: '09012345678',
 	password: 'password',
 };
 
